@@ -204,6 +204,33 @@ DATA = {
 }
 
 
+def write_a_number():
+    goal = random.randint(2, 200)
+    response = input(f"\nWhat is {goal} in french?\n")
+    if response == DATA[goal]:
+        print("Correct!")
+    else:
+        print("Wrong")
+        print(f"The answer was {DATA[goal]}")
+
+
+def simple_math():
+    goal = random.randint(2, 200)
+    delta = random.randint(1, goal)
+    answer = goal - delta
+    response = input(f"\nWhat is (?) + {DATA[delta]} = {DATA[goal]}\n")
+    if response == DATA[answer]:
+        print("Correct!")
+    else:
+        print("Wrong")
+        print(f"The answer was {DATA[answer]}")
+
+
+def ask_for_number():
+    response = int(input("\nWhich french number would you like to see? Between 1 and 200\n"))
+    print(DATA[response])
+
+
 def main():
     game = 0
     try:
@@ -219,30 +246,13 @@ def main():
     match game:
         case 1:
             for n in range(5):
-                goal = random.randint(2, 200)
-                response = input(f"\nWhat is {goal} in french?\n")
-                if response == DATA[goal]:
-                    print("Correct!")
-                else:
-                    print("Wrong")
-                    print(f"The answer was {DATA[goal]}")
-
+                write_a_number()
         case 2:
             for n in range(5):
-                goal = random.randint(2, 200)
-                delta = random.randint(1, goal)
-                answer = goal - delta
-                response = input(f"\nWhat is (?) + {DATA[delta]} = {DATA[goal]}\n")
-                if response == DATA[answer]:
-                    print("Correct!")
-                else:
-                    print("Wrong")
-                    print(f"The answer was {DATA[answer]}")
-
+                simple_math()
         case 3:
             for n in range(5):
-                response = int(input("\nWhich french number would you like to see? Between 1 and 200\n"))
-                print(DATA[response])
+                ask_for_number()
         case _:
             print("Pick a valid number next time")
 
